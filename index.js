@@ -1,39 +1,43 @@
-// Calendário escolher data
-const datePicker = document.getElementById('datePicker');
-datePicker.addEventListener('change', (e) => {
-  const dataSelecionada = e.target.value;
-  console.log('Data selecionada:', dataSelecionada);
-});
+let calendar;
 
-// Botão criar evento
-document.getElementById('btnCriarEvento').addEventListener('click', () => {
-  console.log('Criar Evento clicado');
-});
-
-// Campo pesquisar evento
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  const termo = e.target.value.trim().toLowerCase();
-  console.log('Pesquisar evento:', termo);
-});
-
-// Calendário Principal
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const calendarEl = document.getElementById('calendar');
-  const ec = new EventCalendar(calendarEl, { //inicializa o calendário
-    view: 'timeGridWeek',
-    events: [
-      {
-        id: '1',
-        title: 'Evento 1',
-        start: '2025-09-25T10:00:00',
-        end: '2025-09-25T12:00:00'
-      },
-      {
-        id: '2',
-        title: 'Evento 2',
-        start: '2025-09-26T14:00:00',
-        end: '2025-09-26T16:00:00'
-      }
-    ]
+
+  calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    locale: 'pt-br',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay',
+    },
+    events: []
+  });
+
+  calendar.render();
+
+  document.getElementById('btnCriarEvento').addEventListener('click', () => {
+    const datePicker = document.getElementById('datePicker');
+    const selectedDate = datePicker.value;
+
+    if (!selectedDate) {
+      alert('Por favor, selecione uma data antes de criar um evento.');
+      return;
+    }
+
+    calendar.addEvent({
+      title: 'Evento criado',
+      start: selectedDate,
+      allDay: true
+    });
+
+    datePicker.value = '';
+
+    alert('Evento criado para ' + selectedDate);
+  });
+
+  document.getElementById('searchInput').addEventListener('input', (e) => {
+    const termo = e.target.value.trim().toLowerCase();
+    console.log('Pesquisar evento:', termo);
   });
 });

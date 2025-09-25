@@ -9,6 +9,10 @@ body {
   background: var(--bg);
 }
 
+#datePicker {
+  font-family:Arial, sans-serif;
+}
+
 aside {
   width: 80px;
   background: var(--teal);
@@ -86,4 +90,14 @@ main {
 
 .input-search::placeholder {
   color: #999;
+}
+
+#calendar {
+  max-width: 1800px;
+  margin: 40px auto;
+  padding: 0 10px;
+  height: 800px; 
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }

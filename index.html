@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página Eventos</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Página Eventos</title>
+  <link rel="stylesheet" href="https://unpkg.com/@event-calendar/core@0.3.2/index.global.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/time-grid@0.3.2/index.global.min.css" />
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside>
+   <button title="Home">
+     <img src="assets/imgHomepage.png" alt="Home" />
+   </button>
+   <button title="Usuários">
+     <img src="assets/imgAddUserMale.png" alt="Usuários" />
+   </button>
+   <button title="Calendário">
+     <img src="assets/imgTearOffCalendar.png" alt="Calendário" />
+   </button>
+   <button title="Notificações">
+     <img src="assets/imgDoorbell.png" alt="Notificações" />
+   </button>
+  </aside>
+
+  <main>
+    <div class="top-bar">
+      <input type="date" id="datePicker" class="input-date" />
+      <button class="btn" id="btnCriarEvento">Criar Evento</button>
+      <input type="search" id="searchInput" placeholder="Pesquisar evento" class="input-search" />
+    </div>
+
+    <div id="calendar" style="margin-top: 2rem;"></div>
+
+  </main>
+  <script src="https://unpkg.com/@event-calendar/core@0.3.2/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@event-calendar/time-grid@0.3.2/index.global.min.js"></script>
+  <script src="scripts.js"></script>
+</body>
 </html>
